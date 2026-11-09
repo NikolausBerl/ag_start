@@ -16,6 +16,7 @@
       --card-hotel: linear-gradient(145deg, #84fab0 0%, #8fd3f4 100%);
       --card-gewinnt: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
       --card-schach: linear-gradient(145deg, #4b6cb7 0%, #182848 100%);
+      --card-dalli: linear-gradient(145deg, #ff7e5f 0%, #feb47b 100%);
       --text-dark: #2d3748;
       --text-muted: #5a6578;
     }
@@ -114,11 +115,12 @@
       line-height: 1.4;
     }
 
-    /* Game Cards Grid: 5 Spalten auf Desktop */
+    /* Game Cards Grid: 6 Spalten auf Desktop */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+
       width: 100%;
       margin-bottom: 16px;
     }
@@ -183,6 +185,10 @@
 
     .card-gewinnt .icon-wrapper {
       background: var(--card-gewinnt);
+    }
+
+    .card-dalli .icon-wrapper {
+      background: var(--card-dalli);
     }
 
     .card-schach .icon-wrapper {
@@ -252,6 +258,10 @@
       background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
     }
 
+    .card-dalli .play-btn {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+    }
+
     .card-schach .play-btn {
       background: linear-gradient(135deg, #2b5876 0%, #4e4376 100%);
     }
@@ -290,13 +300,10 @@
     }
 
     /* Responsivität */
-    @media (max-width: 1040px) {
+    @media (max-width: 1100px) {
       .games-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 14px;
-      }
-      .game-card:last-child {
-        grid-column: span 1;
       }
     }
 
@@ -307,12 +314,6 @@
       .games-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-      }
-      .games-grid .game-card:last-child {
-        grid-column: span 2;
-        max-width: 320px;
-        margin: 0 auto;
-        width: 100%;
       }
       .game-card {
         padding: 14px 10px 12px;
@@ -613,6 +614,40 @@
         <h2 class="game-title">Schach</h2>
         <p class="game-desc">
           Königliches Denkspiel mit 8 KI-Stufen.
+        </p>
+        <div class="play-btn">
+          <span>Spielen</span>
+          <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+        </div>
+      </a>
+
+      <!-- Spiel 6: Dalli Klick -->
+      <a href="/dalli" class="game-card card-dalli" title="Dalli Klick spielen">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 100 100" width="52" height="52" xmlns="http://www.w3.org/2000/svg" aria-label="Dalli Klick Mosaik">
+            <defs>
+              <linearGradient id="dk-buzzer" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ff4757"/>
+                <stop offset="100%" stop-color="#c0392b"/>
+              </linearGradient>
+            </defs>
+            <rect x="12" y="12" width="76" height="76" rx="14" fill="#ffffff" stroke="#f1f2f6" stroke-width="2"/>
+            <rect x="18" y="18" width="64" height="64" rx="10" fill="#f8fafc"/>
+            <circle cx="48" cy="44" r="13" fill="#fbc531"/>
+            <path d="M 20 74 L 36 54 L 50 68 L 62 56 L 76 74 Z" fill="#4cd137"/>
+            <path d="M 18 18 H 48 L 44 46 L 18 42 Z" fill="#3b82f6" opacity="0.96"/>
+            <path d="M 52 18 H 82 V 44 L 56 48 Z" fill="#ec4899" opacity="0.96"/>
+            <path d="M 18 46 L 46 50 L 42 82 H 18 Z" fill="#8b5cf6" opacity="0.96"/>
+            <path d="M 62 52 L 82 48 V 82 H 60 Z" fill="#10b981" opacity="0.96"/>
+            <path d="M 46 36 L 68 32 L 64 54 L 44 52 Z" fill="#f59e0b" transform="translate(6, -6) rotate(12 56 43)"/>
+            <circle cx="76" cy="76" r="14" fill="#2f3542"/>
+            <circle cx="76" cy="74" r="11" fill="url(#dk-buzzer)"/>
+            <ellipse cx="74" cy="70" rx="6" ry="3" fill="#ffffff" opacity="0.6"/>
+          </svg>
+        </div>
+        <h2 class="game-title">Dalli Klick</h2>
+        <p class="game-desc">
+          Mosaik-Bilderrätsel mit Buzzer & Punkten.
         </p>
         <div class="play-btn">
           <span>Spielen</span>
