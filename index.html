@@ -12,6 +12,7 @@
     :root {
       --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
       --card-ding: linear-gradient(145deg, #fde047 0%, #2dd4bf 100%);
+      --card-klick: linear-gradient(145deg, #4f46e5 0%, #ec4899 55%, #f59e0b 100%);
       --card-hotel: linear-gradient(145deg, #84fab0 0%, #8fd3f4 100%);
       --card-4er-reihe: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
       --card-schach: linear-gradient(145deg, #4b6cb7 0%, #182848 100%);
@@ -116,7 +117,7 @@
       line-height: 1.4;
     }
 
-    /* Game Cards Grid: 7 Spiele harmonisch (4 oben, 3 zentriert unten auf Desktop) */
+    /* Game Cards Grid: 8 Spiele harmonisch (4 oben, 4 unten auf Desktop) */
     .games-grid {
       display: flex;
       flex-wrap: wrap;
@@ -177,6 +178,10 @@
     /* Kartenspezifische Farbwelten */
     .card-ding .icon-wrapper {
       background: var(--card-ding);
+    }
+
+    .card-klick .icon-wrapper {
+      background: var(--card-klick);
     }
 
     .card-hotel .icon-wrapper {
@@ -251,6 +256,10 @@
 
     .card-ding .play-btn {
       background: linear-gradient(135deg, #0d9488 0%, #f59e0b 100%);
+    }
+
+    .card-klick .play-btn {
+      background: linear-gradient(135deg, #4f46e5 0%, #ec4899 55%, #f59e0b 100%);
     }
 
     .card-hotel .play-btn {
@@ -402,6 +411,43 @@
         <h2 class="game-title">Wo ist das Ding?</h2>
         <p class="game-desc">
           Finde das gleiche Objekt schneller als Elster Elfi!
+        </p>
+        <div class="play-btn">
+          <span>Spielen</span>
+          <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+        </div>
+      </a>
+
+      <!-- Spiel 2: Klick Raetsel -->
+      <a href="/ag_klick_raetsel" class="game-card card-klick" title="Klick Raetsel spielen">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 100 100" width="54" height="54" xmlns="http://www.w3.org/2000/svg" aria-label="Klick Raetsel Mosaik">
+            <defs>
+              <linearGradient id="kr-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef9c3"/>
+                <stop offset="100%" stop-color="#bae6fd"/>
+              </linearGradient>
+              <linearGradient id="kr-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </linearGradient>
+            </defs>
+            <!-- Bildrahmen mit aufgedeckter Sonne links oben -->
+            <rect x="12" y="14" width="76" height="72" rx="12" fill="url(#kr-bg)" stroke="#ffffff" stroke-width="4"/>
+            <circle cx="33" cy="34" r="11" fill="#facc15" stroke="#f59e0b" stroke-width="2.5"/>
+            <!-- Bunte Mosaik-Kacheln -->
+            <polygon points="50,16 86,16 86,48 56,52 46,34" fill="#38bdf8" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="14,52 46,44 56,52 48,84 14,84" fill="#a855f7" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+            <polygon points="56,52 86,48 86,84 48,84" fill="url(#kr-gold)" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- Gold-Stern auf Spezial-Kachel -->
+            <polygon points="70,58 72.5,64 79,64.5 74,68.5 75.5,75 70,71.5 64.5,75 66,68.5 61,64.5 67.5,64" fill="#ffffff" stroke="#b45309" stroke-width="1.4" stroke-linejoin="round"/>
+            <!-- Blitz auf blauer Kachel -->
+            <polygon points="69,23 63,34 69,34 66,43 76,31 70,31" fill="#fef08a" stroke="#0369a1" stroke-width="1.2" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="game-title">Klick Raetsel</h2>
+        <p class="game-desc">
+          Errate das Mosaik-Bild mit Mut-Barometer &amp; Spezial-Kacheln!
         </p>
         <div class="play-btn">
           <span>Spielen</span>
