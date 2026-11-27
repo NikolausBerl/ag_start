@@ -16,6 +16,7 @@
       --card-4er-reihe: linear-gradient(145deg, #f6d365 0%, #fda085 100%);
       --card-schach: linear-gradient(145deg, #4b6cb7 0%, #182848 100%);
       --card-muehle: linear-gradient(145deg, #5c3a21 0%, #c89b44 100%);
+      --card-flipper: linear-gradient(145deg, #7c1d26 0%, #d97706 58%, #fde047 100%);
       --text-dark: #2d3748;
       --text-muted: #5a6578;
     }
@@ -65,7 +66,7 @@
     /* Container */
     .main-container {
       width: 100%;
-      max-width: 1260px;
+      max-width: 1320px;
       z-index: 1;
       display: flex;
       flex-direction: column;
@@ -114,26 +115,26 @@
       line-height: 1.4;
     }
 
-    /* Game Cards Grid: 5 Spiele harmonisch nebeneinander auf Desktop, zentriert beim Umbruch */
+    /* Game Cards Grid: 6 Spiele harmonisch nebeneinander auf Desktop, 3x2 auf mittleren Bildschirmen */
     .games-grid {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       width: 100%;
       margin-bottom: 16px;
     }
 
     /* Einzelne Spielkarte */
     .game-card {
-      width: calc(20% - 13px);
-      min-width: 210px;
+      width: calc(16.666% - 12px);
+      min-width: 188px;
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       border-radius: 22px;
       border: 2px solid rgba(255, 255, 255, 0.95);
       box-shadow: 0 8px 24px rgba(60, 64, 110, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
-      padding: 18px 14px 16px;
+      padding: 18px 12px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -190,6 +191,10 @@
 
     .card-muehle .icon-wrapper {
       background: var(--card-muehle);
+    }
+
+    .card-flipper .icon-wrapper {
+      background: var(--card-flipper);
     }
 
     /* Titel & Beschreibung */
@@ -259,6 +264,10 @@
       background: linear-gradient(135deg, #9c6b27 0%, #d7ab52 100%);
     }
 
+    .card-flipper .play-btn {
+      background: linear-gradient(135deg, #991b1b 0%, #d97706 100%);
+    }
+
     .game-card:hover .play-btn {
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
       filter: brightness(1.05);
@@ -293,7 +302,7 @@
     }
 
     /* Responsivität */
-    @media (max-width: 1100px) {
+    @media (max-width: 1220px) {
       .games-grid {
         gap: 14px;
       }
@@ -524,6 +533,63 @@
         <h2 class="game-title">Mühle Royale</h2>
         <p class="game-desc">
           Edles 3D-Mühlespiel mit KI, Lernmodus &amp; Strategie-Fibel.
+        </p>
+        <div class="play-btn">
+          <span>Spielen</span>
+          <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+        </div>
+      </a>
+
+      <!-- Spiel 6: Wirtshaus König '84 (3D-Flipper) -->
+      <a href="/flipper" class="game-card card-flipper" title="Wirtshaus König '84 – 3D Kneipen-Flipper spielen">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 100 100" width="54" height="54" xmlns="http://www.w3.org/2000/svg" aria-label="Wirtshaus König '84 Flipper">
+            <defs>
+              <linearGradient id="fp-board" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#2c1622"/>
+                <stop offset="100%" stop-color="#140c14"/>
+              </linearGradient>
+              <linearGradient id="fp-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="50%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#b45309"/>
+              </linearGradient>
+              <radialGradient id="fp-ball" cx="35%" cy="30%" r="65%">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="45%" stop-color="#cbd5e1"/>
+                <stop offset="100%" stop-color="#475569"/>
+              </radialGradient>
+              <radialGradient id="fp-bumper-red" cx="38%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#fde047"/>
+                <stop offset="45%" stop-color="#ef4444"/>
+                <stop offset="100%" stop-color="#7f1d1d"/>
+              </radialGradient>
+              <radialGradient id="fp-bumper-amber" cx="38%" cy="35%" r="65%">
+                <stop offset="0%" stop-color="#fef9c3"/>
+                <stop offset="55%" stop-color="#f59e0b"/>
+                <stop offset="100%" stop-color="#92400e"/>
+              </radialGradient>
+            </defs>
+            <!-- Flipper-Spielfeld Rahmen -->
+            <rect x="16" y="8" width="68" height="84" rx="12" fill="url(#fp-board)" stroke="url(#fp-gold)" stroke-width="3.6"/>
+            <!-- Obere Bahn / Lichtbogen -->
+            <path d="M 26 24 A 24 16 0 0 1 74 24" fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-dasharray="5 4" opacity="0.8"/>
+            <!-- 3 glühende Bumper -->
+            <circle cx="37" cy="34" r="9.5" fill="url(#fp-bumper-red)" stroke="#fef08a" stroke-width="1.8"/>
+            <circle cx="63" cy="34" r="9.5" fill="url(#fp-bumper-red)" stroke="#fef08a" stroke-width="1.8"/>
+            <circle cx="50" cy="50" r="8.5" fill="url(#fp-bumper-amber)" stroke="#ffffff" stroke-width="1.6"/>
+            <!-- Glänzende Stahlkugel -->
+            <circle cx="63" cy="60" r="6.8" fill="url(#fp-ball)" stroke="#ffffff" stroke-width="0.8"/>
+            <!-- Zwei klassische Flipperfinger -->
+            <path d="M 24 72 L 45 80" stroke="#fef3c7" stroke-width="6.5" stroke-linecap="round"/>
+            <path d="M 24 72 L 45 80" stroke="#dc2626" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M 76 72 L 55 80" stroke="#fef3c7" stroke-width="6.5" stroke-linecap="round"/>
+            <path d="M 76 72 L 55 80" stroke="#dc2626" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h2 class="game-title">Wirtshaus König '84</h2>
+        <p class="game-desc">
+          3D Kneipen-Flipper mit Kugel-Sicht, Levels &amp; Lernmodus.
         </p>
         <div class="play-btn">
           <span>Spielen</span>
