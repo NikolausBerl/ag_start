@@ -17,6 +17,7 @@
       --card-schach: linear-gradient(145deg, #4b6cb7 0%, #182848 100%);
       --card-muehle: linear-gradient(145deg, #5c3a21 0%, #c89b44 100%);
       --card-flipper: linear-gradient(145deg, #7c1d26 0%, #d97706 58%, #fde047 100%);
+      --card-steine: linear-gradient(145deg, #0c3b2e 0%, #166534 55%, #d4af63 100%);
       --text-dark: #2d3748;
       --text-muted: #5a6578;
     }
@@ -115,7 +116,7 @@
       line-height: 1.4;
     }
 
-    /* Game Cards Grid: 6 Spiele harmonisch nebeneinander auf Desktop, 3x2 auf mittleren Bildschirmen */
+    /* Game Cards Grid: 7 Spiele harmonisch (4 oben, 3 zentriert unten auf Desktop) */
     .games-grid {
       display: flex;
       flex-wrap: wrap;
@@ -127,8 +128,9 @@
 
     /* Einzelne Spielkarte */
     .game-card {
-      width: calc(16.666% - 12px);
-      min-width: 188px;
+      width: calc(25% - 12px);
+      min-width: 205px;
+      max-width: 280px;
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(12px);
       border-radius: 22px;
@@ -195,6 +197,10 @@
 
     .card-flipper .icon-wrapper {
       background: var(--card-flipper);
+    }
+
+    .card-steine .icon-wrapper {
+      background: var(--card-steine);
     }
 
     /* Titel & Beschreibung */
@@ -268,6 +274,10 @@
       background: linear-gradient(135deg, #991b1b 0%, #d97706 100%);
     }
 
+    .card-steine .play-btn {
+      background: linear-gradient(135deg, #0f5132 0%, #c89d4c 100%);
+    }
+
     .game-card:hover .play-btn {
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
       filter: brightness(1.05);
@@ -302,13 +312,14 @@
     }
 
     /* Responsivität */
-    @media (max-width: 1220px) {
+    @media (max-width: 1024px) {
       .games-grid {
         gap: 14px;
       }
       .game-card {
         width: calc(33.333% - 10px);
-        min-width: 200px;
+        min-width: 190px;
+        max-width: none;
       }
     }
 
@@ -590,6 +601,58 @@
         <h2 class="game-title">Flipper-Nostalgie</h2>
         <p class="game-desc">
           Realistischer 3D-Flipper mit Kugel-Sicht, Levels &amp; Lernmodus.
+        </p>
+        <div class="play-btn">
+          <span>Spielen</span>
+          <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+        </div>
+      </a>
+
+      <!-- Spiel 7: Steine legen -->
+      <a href="/steine-legen" class="game-card card-steine" title="Steine legen spielen">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 100 100" width="54" height="54" xmlns="http://www.w3.org/2000/svg" aria-label="Steine legen">
+            <defs>
+              <linearGradient id="sl-felt" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#17523f"/>
+                <stop offset="100%" stop-color="#0b2a20"/>
+              </linearGradient>
+              <linearGradient id="sl-ivory" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fffdf8"/>
+                <stop offset="100%" stop-color="#e9dfc7"/>
+              </linearGradient>
+              <linearGradient id="sl-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fae2a8"/>
+                <stop offset="100%" stop-color="#c89d4c"/>
+              </linearGradient>
+            </defs>
+            <!-- Smaragd-Salontisch -->
+            <rect x="8" y="10" width="84" height="80" rx="14" fill="url(#sl-felt)" stroke="url(#sl-gold)" stroke-width="3.2"/>
+            <!-- Linker Spielstein: Rot 7 -->
+            <g transform="rotate(-8 27 52)">
+              <rect x="14" y="29" width="25" height="38" rx="5" fill="url(#sl-ivory)" stroke="#c7b58e" stroke-width="1.6"/>
+              <text x="26.5" y="54" text-anchor="middle" font-size="21" font-weight="900" fill="#c62828" font-family="Nunito, Arial, sans-serif">7</text>
+              <circle cx="26.5" cy="61" r="2.1" fill="#c62828" opacity="0.55"/>
+            </g>
+            <!-- Mittlerer Spielstein: Blau 7 -->
+            <g>
+              <rect x="37.5" y="24" width="25" height="39" rx="5" fill="url(#sl-ivory)" stroke="url(#sl-gold)" stroke-width="1.8"/>
+              <text x="50" y="50" text-anchor="middle" font-size="22" font-weight="900" fill="#1d4ed8" font-family="Nunito, Arial, sans-serif">7</text>
+              <circle cx="50" cy="57" r="2.2" fill="#1d4ed8" opacity="0.55"/>
+            </g>
+            <!-- Rechter Spielstein: Schwarz 7 -->
+            <g transform="rotate(8 73 52)">
+              <rect x="61" y="29" width="25" height="38" rx="5" fill="url(#sl-ivory)" stroke="#c7b58e" stroke-width="1.6"/>
+              <text x="73.5" y="54" text-anchor="middle" font-size="21" font-weight="900" fill="#1e293b" font-family="Nunito, Arial, sans-serif">7</text>
+              <circle cx="73.5" cy="61" r="2.1" fill="#1e293b" opacity="0.55"/>
+            </g>
+            <!-- Mahagoni-Ablageleiste unten -->
+            <rect x="16" y="72" width="68" height="8" rx="4" fill="#4a2817" stroke="url(#sl-gold)" stroke-width="1.4"/>
+          </svg>
+        </div>
+        <h2 class="game-title">Steine legen</h2>
+        <p class="game-desc">
+          Edles Zahlen-Legespiel im Grand Salon mit KI &amp; Lernmodus.
         </p>
         <div class="play-btn">
           <span>Spielen</span>
